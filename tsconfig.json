@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": ".enoviah/service/@enoviah/nest-seed",
+    "outDir": ".enoviah/service/@enoviah/cvdcare-api",
     "baseUrl": "./",
     "incremental": true
   },
