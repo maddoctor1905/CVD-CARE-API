@@ -1,6 +1,6 @@
 {
-  "name": "@enoviah/cvdcare-api",
-  "version": "0.0.3",
+  "name": "cvdcare-api",
+  "version": "0.0.5",
   "description": "A basic nest-js api",
   "author": "",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "build:prod": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node .enoviah/service/@enoviah/cvdcare-api/main.js\"",
     "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/main.js\"",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -27,22 +27,25 @@
     }
   },
   "dependencies": {
-    "@enoviah/nest-core": "0.0.18",
+    "@enoviah/nest-core": "0.0.27",
     "@godaddy/terminus": "^4.3.1",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
     "@nestjs/swagger": "^3.1.0",
     "@nestjs/terminus": "^6.5.5",
+    "@nestjs/typeorm": "^6.3.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "latest",
     "helmet": "^3.21.2",
     "jsonschema": "^1.2.5",
+    "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "typeorm": "^0.2.24"
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",
@@ -126,6 +129,10 @@
             {
               "path": "docker",
               "name": "docker"
+            },
+            {
+              "path": "node_modules",
+              "name": "node_modules"
             }
           ],
           "test": false
@@ -147,7 +154,15 @@
             "traefik.frontend.entryPoints": "http,https",
             "traefik.backend": "cvdcare-api"
           },
-          "env": []
+          "env": [
+            "PORT",
+            "MYSQL_ADDRESS",
+            "MYSQL_PASSWORD",
+            "MYSQL_PORT",
+            "MYSQL_USER",
+            "MYSQL_DATABASE",
+            "NODE_ENV"
+          ]
         },
         "staging": {
           "network": "traefik",
@@ -157,7 +172,15 @@
             "traefik.frontend.entryPoints": "http,https",
             "traefik.backend": "cvdcare-api"
           },
-          "env": []
+          "env": [
+            "PORT",
+            "MYSQL_ADDRESS",
+            "MYSQL_PASSWORD",
+            "MYSQL_PORT",
+            "MYSQL_USER",
+            "MYSQL_DATABASE",
+            "NODE_ENV"
+          ]
         }
       }
     }
