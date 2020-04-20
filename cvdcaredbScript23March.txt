@@ -281,13 +281,13 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `PatName`, `KPatName`, `MobileNo`, `AltMobileNo`, `Email`, `Address`, `KAddress`, `City`, `KCity`, `Pincode`, `Location`, `KLocation`, `FCGName`, `KFCGName`, `FCGEmail`, `FCGMNO1`, `FCGMNO2`, `Relationship`, `IsOwnPhone`, `IsSmartPhone`, `CGId`, `PatDesc`) VALUES
-(1002, 'P3', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Varamballi', NULL, 'Varamballi', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
+(1002, 'P3', NULL, 7625030681, NULL, 'rohinrrao@gmail.com', 'Varamballi', NULL, 'Varamballi', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
 (1007, 'P1', NULL, 9480503167, NULL, 'rohinirrao@gmail.com', NULL, 'Herooru', 'Chanthaaru', NULL, NULL, 'Herooru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
-(1009, 'P4', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantaaru', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
-(1012, 'P2', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantharu', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 2, NULL),
-(1013, 'P5', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Venus 605, Mars & Venus Apts, Mathias Colony', NULL, 'Mangalore', NULL, 575006, 'Chilimbi', NULL, 'Rohini Rao', NULL, 'rohini.rao@manipal.edu', NULL, NULL, 'Sister', 1, 1, 2, NULL),
-(1014, 'P6', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'fDASF, ZDFJS', NULL, 'Bengaluru', NULL, 600006, 'Bengaluru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
-(1020, 'P7', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'vASERFAS,SDFJS, Manipal', NULL, 'Udupi', NULL, 576104, 'Manipal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, 2, NULL);
+(1009, 'P4', NULL, 7625030682, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantaaru', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
+(1012, 'P2', NULL, 7625030683, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantharu', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 2, NULL),
+(1013, 'P5', NULL, 7625030684, NULL, 'rohinrrao@gmail.com', 'Venus 605, Mars & Venus Apts, Mathias Colony', NULL, 'Mangalore', NULL, 575006, 'Chilimbi', NULL, 'Rohini Rao', NULL, 'rohini.rao@manipal.edu', NULL, NULL, 'Sister', 1, 1, 2, NULL),
+(1014, 'P6', NULL, 7625030685, NULL, 'rohinrrao@gmail.com', 'fDASF, ZDFJS', NULL, 'Bengaluru', NULL, 600006, 'Bengaluru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(1020, 'P7', NULL, 7625030686, NULL, 'rohinrrao@gmail.com', 'vASERFAS,SDFJS, Manipal', NULL, 'Udupi', NULL, 576104, 'Manipal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, 2, NULL);
 
 -- --------------------------------------------------------
 
