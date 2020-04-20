@@ -1,0 +1,856 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 23, 2020 at 12:52 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `cvdcaredb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `caregiver`
+--
+
+CREATE TABLE `caregiver` (
+  `CGId` int(11) NOT NULL,
+  `CGName` varchar(30) NOT NULL,
+  `KCGName` varchar(30) NOT NULL,
+  `MobileNo` bigint(12) NOT NULL,
+  `AltMobileNo` bigint(12) DEFAULT NULL,
+  `Email` varchar(40) DEFAULT NULL,
+  `Gender` enum('M','F','T') NOT NULL,
+  `Department` varchar(30) DEFAULT NULL,
+  `KDepartment` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `caregiver`
+--
+
+INSERT INTO `caregiver` (`CGId`, `CGName`, `KCGName`, `MobileNo`, `AltMobileNo`, `Email`, `Gender`, `Department`, `KDepartment`) VALUES
+(1, 'Henita Joshna', '', 919481518742, NULL, 'henitajoshna@gmail.com', '', 'Dept of OBG Nursing', NULL),
+(2, 'Mamatha JY', '', 917353623279, NULL, 'jymamatha@gmail.com', 'F', 'Dept of OBG Nursing', NULL),
+(3, 'Farnaz Begum', '', 919731993709, NULL, 'farnazbegum17@gmail.com', 'F', 'Dept of OBG Nursing', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dietsupmaster`
+--
+
+CREATE TABLE `dietsupmaster` (
+  `DSId` int(11) NOT NULL,
+  `DSPlanName` varchar(30) NOT NULL,
+  `KDSPlanName` varchar(30) NOT NULL,
+  `DSPlanDescription` text DEFAULT NULL,
+  `KDSPlanDescription` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dietsupmaster`
+--
+
+INSERT INTO `dietsupmaster` (`DSId`, `DSPlanName`, `KDSPlanName`, `DSPlanDescription`, `KDSPlanDescription`) VALUES
+(1, 'Vegetarian South Indian Diet', '', 'Breakfast - 2 idlis/2 dosas with chutney\r\nLunch - rice/sambhar/vegetables,curd\r\nDinner - chapathi/vegetables', NULL),
+(2, 'Mixed South Indian', '', 'Breakfast - 2 idlis/2 dosas with chutney\r\nLunch - rice/fish/chicken/vegetables\r\nDinner - chapathi/fish/chicken/vegetables', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor`
+--
+
+CREATE TABLE `doctor` (
+  `DId` int(11) NOT NULL,
+  `DName` varchar(30) NOT NULL,
+  `KDName` varchar(30) DEFAULT NULL,
+  `MobileNo` bigint(12) NOT NULL,
+  `AltMobileNo` bigint(12) DEFAULT NULL,
+  `Email` varchar(40) DEFAULT NULL,
+  `Gender` enum('M','F','T') NOT NULL,
+  `Department` varchar(30) DEFAULT NULL,
+  `KDepartment` varchar(30) DEFAULT NULL,
+  `Specialization` varchar(30) DEFAULT NULL,
+  `KSpecialization` varchar(30) DEFAULT NULL,
+  `HospitalNameAdd` varchar(30) DEFAULT NULL,
+  `KHospitalNameAdd` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`DId`, `DName`, `KDName`, `MobileNo`, `AltMobileNo`, `Email`, `Gender`, `Department`, `KDepartment`, `Specialization`, `KSpecialization`, `HospitalNameAdd`, `KHospitalNameAdd`) VALUES
+(1, 'D1', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'M', 'General Medicine', NULL, 'Physician', NULL, 'Private Clinic, Bhramavar', NULL),
+(2, 'Praveen Kumar', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'M', 'CommunityMedicine', NULL, 'Physician', NULL, 'Pranav Hospital, Bhramavar', NULL),
+(3, 'Dr. Bhaskar Palan', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'M', 'General Medicine', NULL, 'Physician', NULL, 'New City Hospital , Udupi', NULL),
+(4, 'Dr Sandeep K Pai', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'M', 'General Medicine', NULL, 'Physician', NULL, ' Jeevan Jyothi Hospital, Brahm', NULL),
+(5, 'Dr. Sathish Pai', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'M', 'General Medicine', NULL, 'Physician', NULL, 'Siddhi Clinic, Brahmavar', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exlsmmaster`
+--
+
+CREATE TABLE `exlsmmaster` (
+  `ELId` int(11) NOT NULL,
+  `ELPlanName` varchar(30) NOT NULL,
+  `KELPlanName` varchar(30) NOT NULL,
+  `ELPlanDescription` text DEFAULT NULL,
+  `KELPlanDescription` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `exlsmmaster`
+--
+
+INSERT INTO `exlsmmaster` (`ELId`, `ELPlanName`, `KELPlanName`, `ELPlanDescription`, `KELPlanDescription`) VALUES
+(1, 'Moderate Exercise', '', 'Walking 30 minutes daily\r\nHouse Work', NULL),
+(2, 'Aerobic Exercise', '', 'Workout/Jogging/Cycling along with house work', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `investmaster`
+--
+
+CREATE TABLE `investmaster` (
+  `id` int(11) NOT NULL,
+  `InvMName` varchar(30) NOT NULL,
+  `KInvMName` varchar(30) DEFAULT NULL,
+  `LOINCCode` varchar(10) DEFAULT NULL,
+  `Description` text DEFAULT NULL,
+  `KDescription` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `investmaster`
+--
+
+INSERT INTO `investmaster` (`id`, `InvMName`, `KInvMName`, `LOINCCode`, `Description`, `KDescription`) VALUES
+(1, 'Blood Pressure', NULL, NULL, NULL, NULL),
+(2, 'Blood Sugar', NULL, NULL, NULL, NULL),
+(3, 'HbA1C', NULL, NULL, NULL, NULL),
+(4, 'Cholestrol', NULL, NULL, NULL, NULL),
+(5, 'Triglycerides', NULL, NULL, NULL, NULL),
+(6, 'Serum Creatinine', NULL, NULL, NULL, NULL),
+(7, 'Blood Urea', '', NULL, NULL, NULL),
+(8, 'Urine Sugar', '', NULL, NULL, NULL),
+(9, 'Urine Protein', NULL, NULL, NULL, NULL),
+(10, 'Retinal Examination', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medcondmaster`
+--
+
+CREATE TABLE `medcondmaster` (
+  `MCMId` int(11) NOT NULL,
+  `CondName` varchar(50) NOT NULL,
+  `KCondName` varchar(30) DEFAULT NULL,
+  `ICDCode` varchar(10) DEFAULT NULL,
+  `Type` enum('Medical Condition','Syndrome','Symptom') NOT NULL,
+  `ICDDescription` text DEFAULT NULL,
+  `KICDDescription` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medcondmaster`
+--
+
+INSERT INTO `medcondmaster` (`MCMId`, `CondName`, `KCondName`, `ICDCode`, `Type`, `ICDDescription`, `KICDDescription`) VALUES
+(1, 'Hypertension,Controlled with medication', NULL, NULL, 'Medical Condition', NULL, NULL),
+(2, 'Hypertension,Not Controlled with Medication', NULL, NULL, 'Medical Condition', NULL, NULL),
+(3, 'Atherosclerosis', NULL, NULL, 'Medical Condition', NULL, NULL),
+(4, 'Coronary Heart Disease', NULL, NULL, 'Medical Condition', NULL, NULL),
+(5, 'Congestive Heart Failure', NULL, NULL, 'Medical Condition', NULL, NULL),
+(6, 'Arrythmia', NULL, NULL, 'Medical Condition', NULL, NULL),
+(7, 'Valvular Disease', NULL, NULL, 'Medical Condition', NULL, NULL),
+(8, 'Chronic Obstructive Pulmonary Disease', NULL, NULL, 'Medical Condition', NULL, NULL),
+(9, 'Pulmonary Embolism', NULL, NULL, 'Medical Condition', NULL, NULL),
+(10, 'Endocrine Thyroid Problems', NULL, NULL, 'Medical Condition', NULL, NULL),
+(11, 'Renal Disease', NULL, NULL, 'Medical Condition', NULL, NULL),
+(12, 'Diabetes Mellitus', NULL, NULL, 'Medical Condition', NULL, NULL),
+(13, 'Pain in arms, neck, stomach', NULL, NULL, 'Symptom', NULL, NULL),
+(14, 'Shortness of breadth', NULL, NULL, 'Symptom', NULL, NULL),
+(15, 'Cold Sweat', NULL, NULL, 'Symptom', NULL, NULL),
+(16, 'Light Headedness', NULL, NULL, 'Symptom', NULL, NULL),
+(17, 'Chest Pain', NULL, NULL, 'Symptom', NULL, NULL),
+(18, 'Nausea/Vomiting', NULL, NULL, 'Symptom', NULL, NULL),
+(19, 'Back Pain', NULL, NULL, 'Symptom', NULL, NULL),
+(20, 'Jaw Pain', NULL, NULL, 'Symptom', NULL, NULL),
+(21, 'Sudden numbness on face,arm,leg, one side', NULL, NULL, 'Symptom', NULL, NULL),
+(22, 'Sudden Confusion in speaking or understanding', NULL, NULL, 'Symptom', NULL, NULL),
+(23, 'Blurred Vision', NULL, NULL, 'Symptom', NULL, NULL),
+(24, 'Sudden trouble walking,dizziness,loss of balance', NULL, NULL, 'Symptom', NULL, NULL),
+(25, 'Sudden severe headache', NULL, NULL, 'Symptom', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicationmaster`
+--
+
+CREATE TABLE `medicationmaster` (
+  `id` int(11) NOT NULL,
+  `BrandName` varchar(30) NOT NULL,
+  `KBrandName` varchar(30) NOT NULL,
+  `GenericDrugName` varchar(30) DEFAULT NULL,
+  `KGenericDrugName` varchar(30) DEFAULT NULL,
+  `RxNormCode` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicationmaster`
+--
+
+INSERT INTO `medicationmaster` (`id`, `BrandName`, `KBrandName`, `GenericDrugName`, `KGenericDrugName`, `RxNormCode`) VALUES
+(1, 'T.Metformin 500mg 1-0-1', '', NULL, NULL, NULL),
+(2, 'T. Amlodac 5 mg 1-0-0', '', NULL, NULL, NULL),
+(3, 'T. Thyroxine 1-0-0 (B/F)', '', NULL, NULL, NULL),
+(4, 'T. LOSARTAN + AMLODEPINE 1-0-0', '', NULL, NULL, NULL),
+(5, 'T. GLIMEPIRIDE 500 MG 1-0-1', '', NULL, NULL, NULL),
+(6, 'T. FOLIC ACID 0-1-0', '', NULL, NULL, NULL),
+(7, 'T. ROSUASTATIN 10 MG 0-0-1', '', NULL, NULL, NULL),
+(8, 'T. CHLORTHALIDONE 12.5 MG 0-0-', '', NULL, NULL, NULL),
+(9, 'T. TELECARD 3D 50 MG 1-0-0', '', NULL, NULL, NULL),
+(10, 'T. AMLODEPINE 5 mg 1-0-0', '', NULL, NULL, NULL),
+(11, 'T. PIOGLITAZONE HCL ', '', NULL, NULL, NULL),
+(12, 'METFORMIN HCL', '', NULL, NULL, NULL),
+(13, 'GLIMEPIRIDE 1-0-1/2', '', NULL, NULL, NULL),
+(14, 'T. OLMESARTAN 20 mg 1-0-0', '', NULL, NULL, NULL),
+(15, 'T. LOSARTAN 1-0-0', '', NULL, NULL, NULL),
+(16, 'AMLODEPINE 1-0-0', '', NULL, NULL, NULL),
+(17, 'T. METFORMINE HCL 0-0-1', '', NULL, NULL, NULL),
+(18, 'T. Thyronorm 100 mg 1-0-0 (B/F', '', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient`
+--
+
+CREATE TABLE `patient` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `PatName` varchar(30) DEFAULT NULL,
+  `KPatName` varchar(30) DEFAULT NULL,
+  `MobileNo` bigint(12) NOT NULL,
+  `AltMobileNo` bigint(12) DEFAULT NULL,
+  `Email` varchar(40) DEFAULT NULL,
+  `Address` text DEFAULT NULL,
+  `KAddress` text DEFAULT NULL,
+  `City` varchar(30) DEFAULT NULL,
+  `KCity` varchar(30) DEFAULT NULL,
+  `Pincode` bigint(5) DEFAULT NULL,
+  `Location` varchar(30) DEFAULT NULL,
+  `KLocation` varchar(30) DEFAULT NULL,
+  `FCGName` varchar(30) DEFAULT NULL,
+  `KFCGName` varchar(30) DEFAULT NULL,
+  `FCGEmail` varchar(40) DEFAULT NULL,
+  `FCGMNO1` bigint(12) DEFAULT NULL,
+  `FCGMNO2` bigint(12) DEFAULT NULL,
+  `Relationship` varchar(30) DEFAULT NULL,
+  `IsOwnPhone` tinyint(1) DEFAULT NULL,
+  `IsSmartPhone` tinyint(1) DEFAULT NULL,
+  `CGId` int(11) DEFAULT NULL,
+  `PatDesc` varchar(30) DEFAULT NULL,
+  `Registered` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`id`, `PatName`, `KPatName`, `MobileNo`, `AltMobileNo`, `Email`, `Address`, `KAddress`, `City`, `KCity`, `Pincode`, `Location`, `KLocation`, `FCGName`, `KFCGName`, `FCGEmail`, `FCGMNO1`, `FCGMNO2`, `Relationship`, `IsOwnPhone`, `IsSmartPhone`, `CGId`, `PatDesc`) VALUES
+(1002, 'P3', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Varamballi', NULL, 'Varamballi', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
+(1007, 'P1', NULL, 9480503167, NULL, 'rohinirrao@gmail.com', NULL, 'Herooru', 'Chanthaaru', NULL, NULL, 'Herooru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(1009, 'P4', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantaaru', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 3, NULL),
+(1012, 'P2', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Herooru', NULL, 'Chantharu', NULL, NULL, 'Chantharu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 2, NULL),
+(1013, 'P5', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'Venus 605, Mars & Venus Apts, Mathias Colony', NULL, 'Mangalore', NULL, 575006, 'Chilimbi', NULL, 'Rohini Rao', NULL, 'rohini.rao@manipal.edu', NULL, NULL, 'Sister', 1, 1, 2, NULL),
+(1014, 'P6', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'fDASF, ZDFJS', NULL, 'Bengaluru', NULL, 600006, 'Bengaluru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(1020, 'P7', NULL, 9480503167, NULL, 'rohinrrao@gmail.com', 'vASERFAS,SDFJS, Manipal', NULL, 'Udupi', NULL, 576104, 'Manipal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientdemographics`
+--
+
+CREATE TABLE `patientdemographics` (
+  `patientId` int NOT NULL,
+  `Gender` enum('M','F','T') DEFAULT NULL,
+  `KGender` enum('ಪುರುಷ','ಸ್ತ್ರೀ','ಟ್ರಾನ್ಸ್') DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `AgeMenarc` int(2) DEFAULT NULL,
+  `StrawStaging` enum('Pre-Menopause','Peri-Menopause','Menopause','None') DEFAULT NULL,
+  `KStrawStaging` enum('ಪೂರ್ವ- ಮೆನೋಪಾಸ್','ಪೆರಿ-ಮೆನೋಪಾಸ್','ಮೆನೋಪಾಸ್','ಇತರರು') DEFAULT NULL,
+  `MaritialStatus` enum('Married','Unmarried','Separated','Widow','Divorced') DEFAULT NULL,
+  `KMaritialStatus` enum('ವಿವಾಹಿತ','ಅವಿವಾಹಿತ','ಪ್ರತ್ಯೇಕಿಸಲಾಗಿದೆ','ವಿಧವೆ','ವಿಚೆಧೇನ್','ಇತರರು') DEFAULT NULL,
+  `NoOfLivChildren` int(2) DEFAULT NULL,
+  `ParityScore` varchar(10) DEFAULT NULL,
+  `Religion` enum('Hindu','Muslim','Christian','Others') DEFAULT NULL,
+  `KReligion` enum('ಹಿಂದೂ','ಮುಸ್ಲಿಮರು','ಮುಸ್ಲಿಂ','ಇತರರು') DEFAULT NULL,
+  `EducationStatus` enum('Professional','Graduate','Intermediate','High School','Middle School','Primary','Illiterate') DEFAULT NULL,
+  `KEducationStatus` enum('ವೃತ್ತಿಪರ','ಪದವಿಧರ','ಮಧ್ಯಂತರ','ಪ್ರೌಢಶಾಲೆ','ಮಧ್ಯಮ ಶಾಲೆ','ಪ್ರಾಥಮಿಕ','ಅನಕ್ಷರಸ್ಥ') DEFAULT NULL,
+  `Occupation` enum('Homemaker','Employed','Unemployed','Business','Farmer') DEFAULT NULL,
+  `KOccupation` enum('ಗೃಹಿಣಿ','ಉದ್ಯೋಗದಲ್ಲಿರುವುದು','ನಿರುದ್ಯೋಗಿ',' ವ್ಯವಹಾರ','ರೈತ') DEFAULT NULL,
+  `MonthlyIncome` float(8,2) DEFAULT NULL,
+  `TypeOfCommunity` enum('Urban','Rural','Semi Urban','Semi Rural') DEFAULT NULL,
+  `KTypeOfCommunity` enum('ನಗರ','ಗ್ರಾಮೀಣ','ಅರೆ ನಗರ','ಅರೆ ಗ್ರಾಮೀಣ') DEFAULT NULL,
+  `TypeOfDiet` enum('Vegetarian','Mixed') DEFAULT NULL,
+  `KTypeOfDiet` enum('ಸಸ್ಯಾಹಾರಿ','ಮಿಶ್ರ') DEFAULT NULL,
+  `TypeOfFamily` enum('Joint','Nuclear','Extended','Other') DEFAULT NULL,
+  `KTypeOfFamily` enum('ಜಂಟಿ','ಪರಮಾಣು','ವಿಸ್ತೃತ') DEFAULT NULL,
+  `LanguageApp` enum('English Only','Kannada Only','English & Kannada') DEFAULT NULL,
+  `KLanguageApp` enum('ಇಂಗ್ಲಿಷ್ ಮಾತ್ರ','ಕನ್ನಡ ಮಾತ್ರ','ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್') DEFAULT NULL,
+  `LanguageProf` varchar(30) DEFAULT NULL,
+  `KLanguageProf` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientdemographics`
+--
+
+INSERT INTO `patientdemographics` (`patientId`, `Gender`, `KGender`, `DOB`, `Age`, `AgeMenarc`, `StrawStaging`, `KStrawStaging`, `MaritialStatus`, `KMaritialStatus`, `NoOfLivChildren`, `ParityScore`, `Religion`, `KReligion`, `EducationStatus`, `KEducationStatus`, `Occupation`, `KOccupation`, `MonthlyIncome`, `TypeOfCommunity`, `KTypeOfCommunity`, `TypeOfDiet`, `KTypeOfDiet`, `TypeOfFamily`, `KTypeOfFamily`, `LanguageApp`, `KLanguageApp`, `LanguageProf`, `KLanguageProf`) VALUES
+(1002, 'F', NULL, '0000-00-00', 60, 12, 'Peri-Menopause', NULL, 'Married', NULL, 5, 'P5L5', 'Muslim', NULL, 'Primary', NULL, 'Homemaker', NULL, 10000.00, 'Rural', NULL, 'Mixed', NULL, 'Joint', NULL, 'Kannada Only', NULL, 'Kannada, Urdu', NULL),
+(1007, 'F', NULL, '0000-00-00', 46, 13, 'Peri-Menopause', NULL, 'Married', NULL, 1, 'P1L1', 'Muslim', NULL, 'Primary', NULL, 'Homemaker', NULL, 4000.00, 'Rural', NULL, 'Mixed', NULL, 'Extended', NULL, 'Kannada Only', NULL, 'Kannada, Beary', NULL),
+(1012, 'F', NULL, '1974-11-21', 46, 16, 'Peri-Menopause', NULL, 'Married', NULL, 3, 'P3L3', 'Hindu', NULL, 'Middle School', NULL, 'Homemaker', NULL, 5000.00, 'Rural', NULL, 'Mixed', NULL, 'Joint', NULL, 'Kannada Only', NULL, 'Kannada', NULL),
+(1009, 'F', NULL, '1970-10-11', 49, 13, 'Peri-Menopause', NULL, 'Married', NULL, 2, 'P2L2', 'Hindu', NULL, 'Primary', NULL, 'Homemaker', NULL, 6000.00, 'Rural', NULL, 'Vegetarian', NULL, 'Joint', NULL, 'Kannada Only', NULL, 'Kannada', NULL),
+(1013, 'F', NULL, '1975-12-02', 44, 12, 'Peri-Menopause', NULL, 'Married', NULL, 2, 'P2L2', 'Christian', NULL, 'Primary', NULL, 'Homemaker', NULL, 4000.00, 'Urban', NULL, 'Mixed', NULL, 'Nuclear', NULL, 'Kannada Only', NULL, 'Kannada, Konkani', NULL),
+(1014, 'F', NULL, '1965-09-16', 54, NULL, 'Peri-Menopause', NULL, 'Separated', NULL, 0, 'P0L0', 'Hindu', NULL, 'Graduate', NULL, 'Employed', NULL, 15000.00, 'Semi Urban', NULL, 'Mixed', NULL, 'Other', NULL, 'English & Kannada', NULL, 'Kannada, English', NULL),
+(1020, 'F', NULL, '1982-08-21', 37, NULL, 'Pre-Menopause', NULL, 'Widow', NULL, 2, 'P2L2', 'Hindu', NULL, 'Intermediate', NULL, 'Business', NULL, 25000.00, 'Semi Rural', NULL, 'Mixed', NULL, 'Nuclear', NULL, 'Kannada Only', NULL, 'Kannada, English', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientdoctor`
+--
+
+CREATE TABLE `patientdoctor` (
+  `patientId` int NOT NULL,
+  `DId` int(11) NOT NULL,
+  `AssignDate` date DEFAULT NULL,
+  `PhyDiagnosis` text DEFAULT NULL,
+  `PhyComplianceAdvice` text DEFAULT NULL,
+  `PhyMedicationAdvice` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientdoctor`
+--
+
+INSERT INTO `patientdoctor` (`patientId`, `DId`, `AssignDate`, `PhyDiagnosis`, `PhyComplianceAdvice`, `PhyMedicationAdvice`) VALUES
+(1013, 2, NULL, NULL, 'To check BP every once in 2 months', NULL),
+(1014, 1, NULL, NULL, 'To check BP & Blood Sugar every once in 2 months', NULL),
+(1020, 3, NULL, 'less salt, yoga, walking, exercise', 'BP & Blood sugar check up every month ', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientinvordered`
+--
+
+CREATE TABLE `patientinvordered` (
+  `patientId` int NOT NULL,
+  `PrescId` varchar(20) DEFAULT NULL,
+  `STDate` date NOT NULL,
+  `investigationId` int(11) NOT NULL,
+  `Frequency` enum('Monthly','Weekly','Daily','Forynightly','2 Months','3 Months','6 Months','Yearly') NOT NULL,
+  `KFrequency` enum('ಮಾಸಿಕ','ಸಾಪ್ತಾಹಿಕ','ದೈನಂದಿನ','ಹದಿನೈದು ದಿನಗಳು','2 ತಿಂಗಳು','3 ತಿಂಗಳು','6 ತಿಂಗಳ','ವಾರ್ಷಿಕ') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientinvordered`
+--
+
+INSERT INTO `patientinvordered` (`patientId`, `PrescId`, `STDate`, `investigationId`, `Frequency`, `KFrequency`) VALUES
+(1002, NULL, '2020-02-17', 1, 'Monthly', NULL),
+(1002, NULL, '2020-02-17', 2, 'Monthly', NULL),
+(1007, NULL, '2020-02-17', 1, 'Monthly', NULL),
+(1012, NULL, '2020-02-17', 1, 'Monthly', NULL),
+(1009, NULL, '2020-02-17', 1, 'Monthly', NULL),
+(1009, NULL, '2020-02-17', 2, '2 Months', NULL),
+(1009, NULL, '2020-02-17', 10, 'Yearly', NULL),
+(1013, NULL, '2020-02-17', 1, '2 Months', NULL),
+(1014, NULL, '2020-02-17', 1, '2 Months', NULL),
+(1014, NULL, '2020-02-17', 2, '2 Months', NULL),
+(1020, NULL, '2020-02-17', 1, 'Monthly', NULL),
+(1020, NULL, '2020-02-17', 2, 'Monthly', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientmedication`
+--
+
+CREATE TABLE `patientmedication` (
+  `patientId` int NOT NULL,
+  `PrescId` varchar(20) DEFAULT NULL,
+  `medicationId` int(11) NOT NULL,
+  `MedicatonDate` date DEFAULT NULL,
+  `ValidFromDate` date DEFAULT NULL,
+  `ValidToDate` date DEFAULT NULL,
+  `MedicationTime` enum('1-0-0','0-1-0','0-0-1','1-1-0','1-0-1','0-1-1','1-1-1','Evening','Bedtime') DEFAULT NULL,
+  `Strength` int(3) DEFAULT NULL,
+  `Unit` enum('mg','ml') DEFAULT NULL,
+  `Route` enum('Oral','Injection') DEFAULT NULL,
+  `KRoute` enum('ಮೌಖಿಕ','ಚುಚ್ಚುಮದ್ದು') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientmedication`
+--
+
+INSERT INTO `patientmedication` (`patientId`, `PrescId`, `medicationId`, `MedicatonDate`, `ValidFromDate`, `ValidToDate`, `MedicationTime`, `Strength`, `Unit`, `Route`, `KRoute`) VALUES
+(1002, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, 'Oral', NULL),
+(1002, NULL, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1002, NULL, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1002, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1007, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL, 'Oral', NULL),
+(1012, NULL, 10, NULL, '2020-01-01', NULL, NULL, NULL, NULL, NULL, NULL),
+(1009, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1009, NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1009, NULL, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1009, NULL, 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1014, NULL, 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1014, NULL, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1014, NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1020, NULL, 18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientmedsymptrack`
+--
+
+CREATE TABLE `patientmedsymptrack` (
+  `patientId` int NOT NULL,
+  `MCMId` int(11) NOT NULL,
+  `STDate` date NOT NULL,
+  `STDescription` text DEFAULT NULL,
+  `KSTDescription` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientmedsymptrack`
+--
+
+INSERT INTO `patientmedsymptrack` (`patientId`, `MCMId`, `STDate`, `STDescription`, `KSTDescription`) VALUES
+(1002, 16, '2020-02-17', NULL, NULL),
+(1002, 19, '2020-02-17', NULL, NULL),
+(1002, 23, '2020-02-17', NULL, NULL),
+(1002, 2, '0000-00-00', NULL, NULL),
+(1002, 12, '0000-00-00', NULL, NULL),
+(1007, 1, '0000-00-00', NULL, NULL),
+(1007, 19, '0000-00-00', NULL, NULL),
+(1007, 23, '0000-00-00', NULL, NULL),
+(1007, 16, '0000-00-00', NULL, NULL),
+(1012, 2, '0000-00-00', NULL, NULL),
+(1009, 1, '0000-00-00', NULL, NULL),
+(1009, 12, '0000-00-00', NULL, NULL),
+(1009, 16, '0000-00-00', NULL, NULL),
+(1009, 23, '0000-00-00', NULL, NULL),
+(1013, 11, '0000-00-00', NULL, NULL),
+(1013, 15, '0000-00-00', NULL, NULL),
+(1013, 18, '0000-00-00', NULL, NULL),
+(1014, 2, '0000-00-00', NULL, NULL),
+(1014, 12, '0000-00-00', NULL, NULL),
+(1014, 16, '2020-03-10', NULL, NULL),
+(1020, 10, '0000-00-00', NULL, NULL),
+(1020, 12, '0000-00-00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientrecruitment`
+--
+
+CREATE TABLE `patientrecruitment` (
+  `patientId` int NOT NULL,
+  `SurveyDate` date NOT NULL,
+  `LastDVisitDate` date DEFAULT NULL,
+  `DId` int(11) DEFAULT NULL,
+  `PhyDiagnosis` text DEFAULT NULL,
+  `PhyComplianceAdvice` text DEFAULT NULL,
+  `PhyMedicationAdvice` text DEFAULT NULL,
+  `DVisitFrequency` enum('Monthly','Weekly','Daily','Fortnightly','2 Months','3 Months','6 Months','Yearly') NOT NULL,
+  `KDVisitFrequency` enum('ಮಾಸಿಕ','ಸಾಪ್ತಾಹಿಕ','ದೈನಂದಿನ','ಹದಿನೈದು ದಿನಗಳು','2 ತಿಂಗಳು','3 ತಿಂಗಳು','6 ತಿಂಗಳ','ವಾರ್ಷಿಕ') DEFAULT NULL,
+  `Weight` float(7,2) DEFAULT NULL,
+  `WUnitID` enum('kgs','pds') DEFAULT NULL,
+  `Height` float(7,2) DEFAULT NULL,
+  `HUnitID` enum('cms','ft') DEFAULT NULL,
+  `WaistCircum` float(7,2) DEFAULT NULL,
+  `WCUnitID` int(3) NOT NULL,
+  `WaistHipRatio` enum('cms','inc') DEFAULT NULL,
+  `HeartRate` int(3) DEFAULT NULL,
+  `RespiratoryRate` int(3) DEFAULT NULL,
+  `BPSystolic` int(3) DEFAULT NULL,
+  `BPDiastolic` int(3) DEFAULT NULL,
+  `PhysicalActivity` enum('Very Active','Active','Sedentry','In Active') NOT NULL,
+  `KPhysicalActivity` enum('ಬಹಳ ಸಕ್ರಿಯ','ಸಕ್ರಿಯ','ಜಡ','ನಿಷ್ಕ್ರಿಯ') DEFAULT NULL,
+  `MenstrualStatus` enum('Regular','Irregular') NOT NULL,
+  `KMenstrualStatus` enum('ನಿಯಮಿತ','ಅನಿಯಮಿತ') DEFAULT NULL,
+  `SurgicalHistory` text DEFAULT NULL,
+  `KSurgicalHistory` text DEFAULT NULL,
+  `SurgeryDate` date DEFAULT NULL,
+  `DSId` int(11) DEFAULT NULL,
+  `ELId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientrecruitment`
+--
+
+INSERT INTO `patientrecruitment` (`patientId`, `SurveyDate`, `LastDVisitDate`, `DId`, `PhyDiagnosis`, `PhyComplianceAdvice`, `PhyMedicationAdvice`, `DVisitFrequency`, `KDVisitFrequency`, `Weight`, `WUnitID`, `Height`, `HUnitID`, `WaistCircum`, `WCUnitID`, `WaistHipRatio`, `HeartRate`, `RespiratoryRate`, `BPSystolic`, `BPDiastolic`, `PhysicalActivity`, `KPhysicalActivity`, `MenstrualStatus`, `KMenstrualStatus`, `SurgicalHistory`, `KSurgicalHistory`, `SurgeryDate`, `DSId`, `ELId`) VALUES
+(1002, '2020-02-17', '2020-02-05', 3, 'Salt Restriction and Regular Exercise recommended', 'Check Blood Pressure, Blood Sugar and Weight every month', NULL, 'Monthly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, NULL, NULL, NULL, NULL, NULL),
+(1007, '2020-02-18', '2020-01-01', 4, 'Salt Restriction, Exercise', 'Weight check every 6 months, BP every month', NULL, 'Monthly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, NULL, NULL, NULL, NULL, NULL),
+(1012, '2020-02-18', '2020-02-03', 5, NULL, 'Check BP every month', NULL, 'Fortnightly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, 'Tubectomy , 15 years back', NULL, NULL, 2, 1),
+(1009, '2020-02-18', '2020-02-01', 2, NULL, 'To check BP every monthly & Sugar every once in 2 months\r\nTo go for eye examination every yearly', NULL, 'Monthly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, NULL, NULL, NULL, 1, 2),
+(1013, '2020-02-18', '2019-11-01', 2, NULL, 'Check BP every 2 months', NULL, '2 Months', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '', NULL, '', NULL, NULL, NULL, NULL, 2, 2),
+(1014, '2020-02-24', '2019-10-15', 3, NULL, 'Check BP & Sugar every 2 months', NULL, '2 Months', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'In Active', NULL, 'Regular', NULL, 'None', NULL, NULL, 2, 2),
+(1020, '2020-03-09', NULL, NULL, NULL, 'Check BP & Sugar every month', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, 'Irregular', NULL, 'None', NULL, NULL, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patientsmssent`
+--
+
+CREATE TABLE `patientsmssent` (
+  `patientId`int NOT NULL,
+  `SMSSentDate` date NOT NULL,
+  `SMSId` int(3) NOT NULL,
+  `AdditionalMSG` text DEFAULT NULL,
+  `KAdditionalMSG` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pativrresponse`
+--
+
+CREATE TABLE `pativrresponse` (
+  `patientId` int NOT NULL,
+  `IVRDate` datetime NOT NULL,
+  `Q1` varchar(10) NOT NULL,
+  `Q2` varchar(10) NOT NULL,
+  `Q3` varchar(10) NOT NULL,
+  `Q4` varchar(10) NOT NULL,
+  `Q5` varchar(10) NOT NULL,
+  `Q6` varchar(10) NOT NULL,
+  `Q7` varchar(10) NOT NULL,
+  `Q8` varchar(10) NOT NULL,
+  `Q9` varchar(10) NOT NULL,
+  `Q10` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `smsmaster`
+--
+
+CREATE TABLE `smsmaster` (
+  `SMSId` int(11) NOT NULL,
+  `Message` text NOT NULL,
+  `KMessage` text NOT NULL,
+  `SMSType` enum('DoctorVisit','Alarming Symptom','Abnormal Values','Medication','Compliance') NOT NULL,
+  `KConditions` enum('ವೈದ್ಯರ ಭೇಟಿ','ಆತಂಕಕಾರಿ ಲಕ್ಷಣ','ಅಸಹಜ ಮೌಲ್ಯಗಳು','ಮಾಸಿಕ ಪರೀಕ್ಷೆ') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `smsmaster`
+--
+
+INSERT INTO `smsmaster` (`SMSId`, `Message`, `KMessage`, `SMSType`, `KConditions`) VALUES
+(1, 'This is a reminded to visit your doctor this week', '', 'DoctorVisit', 'ವೈದ್ಯರ ಭೇಟಿ'),
+(2, 'This is a reminder to take your medication this week', '', 'Medication', 'ವೈದ್ಯರ ಭೇಟಿ'),
+(3, 'This is a reminder to take your Blood Pressure Test', '', 'Compliance', ''),
+(4, 'This is a reminder to take your Blood Sugar Test', '', 'Compliance', ''),
+(5, 'This is a reminder to take your Cholestrol Test', '', 'Compliance', ''),
+(6, 'This is a reminder to take your Retinal Examination Test', '', 'Compliance', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uploading`
+--
+
+CREATE TABLE `uploading` (
+  `patientId` int NOT NULL,
+  `Doctype` varchar(10) DEFAULT NULL,
+  `UploadingDate` date NOT NULL,
+  `Location` varchar(30) DEFAULT NULL,
+  `Filename` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `caregiver`
+--
+ALTER TABLE `caregiver`
+  ADD PRIMARY KEY (`CGId`);
+
+--
+-- Indexes for table `dietsupmaster`
+--
+ALTER TABLE `dietsupmaster`
+  ADD PRIMARY KEY (`DSId`);
+
+--
+-- Indexes for table `doctor`
+--
+ALTER TABLE `doctor`
+  ADD PRIMARY KEY (`DId`);
+
+--
+-- Indexes for table `exlsmmaster`
+--
+ALTER TABLE `exlsmmaster`
+  ADD PRIMARY KEY (`ELId`);
+
+--
+-- Indexes for table `investmaster`
+--
+ALTER TABLE `investmaster`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medcondmaster`
+--
+ALTER TABLE `medcondmaster`
+  ADD PRIMARY KEY (`MCMId`);
+
+--
+-- Indexes for table `medicationmaster`
+--
+ALTER TABLE `medicationmaster`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patient`
+--
+ALTER TABLE `patient`
+   AUTO_INCREMENT=1030,
+  ADD KEY `CGId` (`CGId`);
+
+--
+-- Indexes for table `patientdemographics`
+--
+ALTER TABLE `patientdemographics`
+  ADD KEY `patientId` (`patientId`);
+
+--
+-- Indexes for table `patientdoctor`
+--
+ALTER TABLE `patientdoctor`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `DId` (`DId`);
+
+--
+-- Indexes for table `patientinvordered`
+--
+ALTER TABLE `patientinvordered`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `investigationId` (`investigationId`);
+
+--
+-- Indexes for table `patientmedication`
+--
+ALTER TABLE `patientmedication`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `medicationId` (`medicationId`);
+
+--
+-- Indexes for table `patientmedsymptrack`
+--
+ALTER TABLE `patientmedsymptrack`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `MCMId` (`MCMId`);
+
+--
+-- Indexes for table `patientrecruitment`
+--
+ALTER TABLE `patientrecruitment`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `DId` (`DId`),
+  ADD KEY `DSId` (`DSId`),
+  ADD KEY `ELId` (`ELId`);
+
+--
+-- Indexes for table `patientsmssent`
+--
+ALTER TABLE `patientsmssent`
+  ADD KEY `patientId` (`patientId`),
+  ADD KEY `SMSId` (`SMSId`);
+
+--
+-- Indexes for table `pativrresponse`
+--
+ALTER TABLE `pativrresponse`
+  ADD KEY `patientId` (`patientId`);
+
+--
+-- Indexes for table `smsmaster`
+--
+ALTER TABLE `smsmaster`
+  ADD PRIMARY KEY (`SMSId`);
+
+--
+-- Indexes for table `uploading`
+--
+ALTER TABLE `uploading`
+  ADD KEY `patientId` (`patientId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `caregiver`
+--
+ALTER TABLE `caregiver`
+  MODIFY `CGId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `dietsupmaster`
+--
+ALTER TABLE `dietsupmaster`
+  MODIFY `DSId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `DId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `exlsmmaster`
+--
+ALTER TABLE `exlsmmaster`
+  MODIFY `ELId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `investmaster`
+--
+ALTER TABLE `investmaster`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `medcondmaster`
+--
+ALTER TABLE `medcondmaster`
+  MODIFY `MCMId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `medicationmaster`
+--
+ALTER TABLE `medicationmaster`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `smsmaster`
+--
+ALTER TABLE `smsmaster`
+  MODIFY `SMSId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `patient`
+--
+ALTER TABLE `patient`
+  ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`CGId`) REFERENCES `caregiver` (`CGId`);
+
+--
+-- Constraints for table `patientdemographics`
+--
+ALTER TABLE `patientdemographics`
+  ADD CONSTRAINT `patientdemographics_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`);
+
+--
+-- Constraints for table `patientdoctor`
+--
+ALTER TABLE `patientdoctor`
+  ADD CONSTRAINT `patientdoctor_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientdoctor_ibfk_2` FOREIGN KEY (`DId`) REFERENCES `doctor` (`DId`);
+
+--
+-- Constraints for table `patientinvordered`
+--
+ALTER TABLE `patientinvordered`
+  ADD CONSTRAINT `patientinvordered_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientinvordered_ibfk_2` FOREIGN KEY (`investigationId`) REFERENCES `investmaster` (`id`);
+
+--
+-- Constraints for table `patientmedication`
+--
+ALTER TABLE `patientmedication`
+  ADD CONSTRAINT `patientmedication_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientmedication_ibfk_2` FOREIGN KEY (`medicationId`) REFERENCES `medicationmaster` (`id`);
+
+--
+-- Constraints for table `patientmedsymptrack`
+--
+ALTER TABLE `patientmedsymptrack`
+  ADD CONSTRAINT `patientmedsymptrack_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientmedsymptrack_ibfk_2` FOREIGN KEY (`MCMId`) REFERENCES `medcondmaster` (`MCMId`);
+
+--
+-- Constraints for table `patientrecruitment`
+--
+ALTER TABLE `patientrecruitment`
+  ADD CONSTRAINT `patientrecruitment_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientrecruitment_ibfk_2` FOREIGN KEY (`DId`) REFERENCES `doctor` (`DId`),
+  ADD CONSTRAINT `patientrecruitment_ibfk_3` FOREIGN KEY (`DSId`) REFERENCES `dietsupmaster` (`DSId`),
+  ADD CONSTRAINT `patientrecruitment_ibfk_4` FOREIGN KEY (`ELId`) REFERENCES `exlsmmaster` (`ELId`);
+
+--
+-- Constraints for table `patientsmssent`
+--
+ALTER TABLE `patientsmssent`
+  ADD CONSTRAINT `patientsmssent_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `patientsmssent_ibfk_2` FOREIGN KEY (`SMSId`) REFERENCES `smsmaster` (`SMSId`);
+
+--
+-- Constraints for table `pativrresponse`
+--
+ALTER TABLE `pativrresponse`
+  ADD CONSTRAINT `pativrresponse_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`);
+
+--
+-- Constraints for table `uploading`
+--
+ALTER TABLE `uploading`
+  ADD CONSTRAINT `uploading_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
