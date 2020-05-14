@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": ".enoviah/service/@enoviah/cvdcare-api",
+    "outDir": ".enoviah/service/cvdcare-api",
     "baseUrl": "./",
     "incremental": true
   },
