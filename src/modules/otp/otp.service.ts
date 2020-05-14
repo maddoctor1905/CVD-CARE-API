@@ -12,7 +12,7 @@ export class OtpService {
     async create(phoneNumber: string) {
         const patient = await this.patientService.findOne({where: {MobileNo: phoneNumber}});
         if (!patient) {
-            throw new BadRequestException('Cannot find patient for number ' + phoneNumber);
+            throw new BadRequestException('Patient number not registered');
         }
         const oldOtp = await this.otpRepository.findOne({where: {MobileNo: phoneNumber}});
         if (oldOtp) {
@@ -48,7 +48,7 @@ export class OtpService {
             throw new BadRequestException('Cannot find otp');
         }
         if (otp.code !== code) {
-            throw new BadRequestException('OTP is not valid');
+            throw new BadRequestException('OTP does not match');
         }
         try {
             await this.patientService.updateOne({where: {MobileNo: phoneNumber}}, {Registered: 1});
