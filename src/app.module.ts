@@ -10,6 +10,9 @@ import {InvestigationMaster} from './modules/investigation/investigationMaster.e
 import {Otp} from './modules/otp/otp.entity';
 import {OtpModule} from './modules/otp/otp.module';
 import {environment} from './environment/env';
+import {Doctor} from './modules/doctor/doctor.entity';
+import {PatientRecruitment} from './modules/patient/patientRecruitment/patientRecruitment.entity';
+import {PatientRecruitmentModule} from './modules/patient/patientRecruitment/patientRecruitment.module';
 
 @Module({
     imports: [EnoNestCoreModule, TypeOrmModule.forRoot({
@@ -19,7 +22,8 @@ import {environment} from './environment/env';
         username: environment.environment.MYSQL_USER ,
         password: environment.environment.MYSQL_PASSWORD,
         database: environment.environment.MYSQL_DATABASE,
-        entities: [Patient, PatientMedication, MedicationMaster, PatientInvestigation, InvestigationMaster, Otp],
+        entities: [Patient, PatientMedication, MedicationMaster, PatientInvestigation, InvestigationMaster, Otp,
+          Doctor, PatientRecruitment],
         synchronize: true,
     }), PatientModule, OtpModule],
     controllers: [],

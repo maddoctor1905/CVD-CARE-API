@@ -1,6 +1,6 @@
 {
   "name": "cvdcare-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A basic nest-js api",
   "author": "",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "build:prod": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node .enoviah/service/@enoviah/cvdcare-api/main.js\"",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node .enoviah/service/cvdcare-api/main.js\"",
     "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/main.js\"",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",

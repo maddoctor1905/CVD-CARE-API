@@ -5,11 +5,14 @@ import {PatientInvestigationService} from './patientInvestigation.service';
 @Controller('patients/:id/investigations')
 @ApiUseTags('Investigations')
 export class PatientInvestigationController {
-    constructor(private readonly patientInvestigationService: PatientInvestigationService) {
-    }
+  constructor(private readonly patientInvestigationService: PatientInvestigationService) {
+  }
 
-    @Get()
-    findManyByPatientId(@Param('id') patientId: number) {
-        return this.patientInvestigationService.findMany({where: {Patient: patientId}, relations: ['Investigation']});
-    }
+  @Get()
+  findManyByPatientId(@Param('id') patientId: number) {
+    return this.patientInvestigationService.findMany({
+      where: {Patient: patientId},
+      relations: ['Investigation'],
+    });
+  }
 }
