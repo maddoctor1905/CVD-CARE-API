@@ -164,7 +164,7 @@ INSERT INTO `investmaster` (`id`, `InvMName`, `KInvMName`, `LOINCCode`, `Descrip
 --
 
 CREATE TABLE `medcondmaster` (
-  `MCMId` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `CondName` varchar(50) NOT NULL,
   `KCondName` varchar(30) DEFAULT NULL,
   `ICDCode` varchar(10) DEFAULT NULL,
@@ -177,7 +177,7 @@ CREATE TABLE `medcondmaster` (
 -- Dumping data for table `medcondmaster`
 --
 
-INSERT INTO `medcondmaster` (`MCMId`, `CondName`, `KCondName`, `ICDCode`, `Type`, `ICDDescription`, `KICDDescription`) VALUES
+INSERT INTO `medcondmaster` (`id`, `CondName`, `KCondName`, `ICDCode`, `Type`, `ICDDescription`, `KICDDescription`) VALUES
 (1, 'Hypertension,Controlled with medication', NULL, NULL, 'Medical Condition', NULL, NULL),
 (2, 'Hypertension,Not Controlled with Medication', NULL, NULL, 'Medical Condition', NULL, NULL),
 (3, 'Atherosclerosis', NULL, NULL, 'Medical Condition', NULL, NULL),
@@ -445,7 +445,7 @@ INSERT INTO `patientmedication` (`patientId`, `PrescId`, `medicationId`, `Medica
 
 CREATE TABLE `patientmedsymptrack` (
   `patientId` int NOT NULL,
-  `MCMId` int(11) NOT NULL,
+  `medicationConditionId` int(11) NOT NULL,
   `STDate` date NOT NULL,
   `STDescription` text DEFAULT NULL,
   `KSTDescription` text DEFAULT NULL
@@ -455,29 +455,29 @@ CREATE TABLE `patientmedsymptrack` (
 -- Dumping data for table `patientmedsymptrack`
 --
 
-INSERT INTO `patientmedsymptrack` (`patientId`, `MCMId`, `STDate`, `STDescription`, `KSTDescription`) VALUES
+INSERT INTO `patientmedsymptrack` (`patientId`, `medicationConditionId`, `STDate`, `STDescription`, `KSTDescription`) VALUES
 (1002, 16, '2020-02-17', NULL, NULL),
 (1002, 19, '2020-02-17', NULL, NULL),
 (1002, 23, '2020-02-17', NULL, NULL),
-(1002, 2, '0000-00-00', NULL, NULL),
-(1002, 12, '0000-00-00', NULL, NULL),
-(1007, 1, '0000-00-00', NULL, NULL),
-(1007, 19, '0000-00-00', NULL, NULL),
-(1007, 23, '0000-00-00', NULL, NULL),
-(1007, 16, '0000-00-00', NULL, NULL),
-(1012, 2, '0000-00-00', NULL, NULL),
-(1009, 1, '0000-00-00', NULL, NULL),
-(1009, 12, '0000-00-00', NULL, NULL),
-(1009, 16, '0000-00-00', NULL, NULL),
-(1009, 23, '0000-00-00', NULL, NULL),
-(1013, 11, '0000-00-00', NULL, NULL),
-(1013, 15, '0000-00-00', NULL, NULL),
-(1013, 18, '0000-00-00', NULL, NULL),
-(1014, 2, '0000-00-00', NULL, NULL),
-(1014, 12, '0000-00-00', NULL, NULL),
+(1002, 2, '2020-05-17', NULL, NULL),
+(1002, 12, '2020-05-20', NULL, NULL),
+(1007, 1, '2020-05-20', NULL, NULL),
+(1007, 19, '2020-05-20', NULL, NULL),
+(1007, 23, '2020-05-20', NULL, NULL),
+(1007, 16, '2020-05-20', NULL, NULL),
+(1012, 2, '2020-05-20', NULL, NULL),
+(1009, 1, '2020-05-20', NULL, NULL),
+(1009, 12, '2020-05-20', NULL, NULL),
+(1009, 16, '2020-05-20', NULL, NULL),
+(1009, 23, '2020-05-20', NULL, NULL),
+(1013, 11, '2020-05-20', NULL, NULL),
+(1013, 15, '2020-05-20', NULL, NULL),
+(1013, 18, '2020-05-20', NULL, NULL),
+(1014, 2, '2020-05-20', NULL, NULL),
+(1014, 12, '2020-05-20', NULL, NULL),
 (1014, 16, '2020-03-10', NULL, NULL),
-(1020, 10, '0000-00-00', NULL, NULL),
-(1020, 12, '0000-00-00', NULL, NULL);
+(1020, 10, '2020-05-20', NULL, NULL),
+(1020, 12, '2020-05-20', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -648,7 +648,7 @@ ALTER TABLE `patientrecruitment`
 -- Indexes for table `medcondmaster`
 --
 ALTER TABLE `medcondmaster`
-  ADD PRIMARY KEY (`MCMId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `medicationmaster`
@@ -695,7 +695,7 @@ ALTER TABLE `patientmedication`
 --
 ALTER TABLE `patientmedsymptrack`
   ADD KEY `patientId` (`patientId`),
-  ADD KEY `MCMId` (`MCMId`);
+  ADD KEY `medicationConditionId` (`medicationConditionId`);
 
 --
 -- Indexes for table `patientrecruitment`
@@ -769,7 +769,7 @@ ALTER TABLE `investmaster`
 -- AUTO_INCREMENT for table `medcondmaster`
 --
 ALTER TABLE `medcondmaster`
-  MODIFY `MCMId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `medicationmaster`
@@ -825,7 +825,7 @@ ALTER TABLE `patientmedication`
 --
 ALTER TABLE `patientmedsymptrack`
   ADD CONSTRAINT `patientmedsymptrack_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
-  ADD CONSTRAINT `patientmedsymptrack_ibfk_2` FOREIGN KEY (`MCMId`) REFERENCES `medcondmaster` (`MCMId`);
+  ADD CONSTRAINT `patientmedsymptrack_ibfk_2` FOREIGN KEY (`medicationConditionId`) REFERENCES `medcondmaster` (`id`);
 
 --
 -- Constraints for table `patientrecruitment`
