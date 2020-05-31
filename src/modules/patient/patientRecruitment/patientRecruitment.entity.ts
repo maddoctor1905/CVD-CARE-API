@@ -1,6 +1,8 @@
 import {Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn} from 'typeorm';
 import {Patient} from '../patient.entity';
 import {Doctor} from '../../doctor/doctor.entity';
+import {Diet} from '../../diet/diet.entity';
+import {Exercise} from '../../exercise/exercise.entity';
 
 @Entity('patientrecruitment')
 export class PatientRecruitment {
@@ -123,9 +125,11 @@ export class PatientRecruitment {
   @Column({type: 'date', default: null})
   SurgeryDate: string;
 
-  @Column({type: 'int', default: null})
-  DSId: number;
+  @ManyToOne(type => Diet)
+  @JoinColumn()
+  Diet: Diet;
 
-  @Column({type: 'int', default: null})
-  ELId: number;
+  @ManyToOne(type => Exercise)
+  @JoinColumn()
+  Exercise: Exercise;
 }

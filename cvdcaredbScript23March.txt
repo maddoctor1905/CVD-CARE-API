@@ -56,7 +56,7 @@ INSERT INTO `caregiver` (`CGId`, `CGName`, `KCGName`, `MobileNo`, `AltMobileNo`,
 --
 
 CREATE TABLE `dietsupmaster` (
-  `DSId` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `DSPlanName` varchar(30) NOT NULL,
   `KDSPlanName` varchar(30) NOT NULL,
   `DSPlanDescription` text DEFAULT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `dietsupmaster` (
 -- Dumping data for table `dietsupmaster`
 --
 
-INSERT INTO `dietsupmaster` (`DSId`, `DSPlanName`, `KDSPlanName`, `DSPlanDescription`, `KDSPlanDescription`) VALUES
+INSERT INTO `dietsupmaster` (`id`, `DSPlanName`, `KDSPlanName`, `DSPlanDescription`, `KDSPlanDescription`) VALUES
 (1, 'Vegetarian South Indian Diet', '', 'Breakfast - 2 idlis/2 dosas with chutney\r\nLunch - rice/sambhar/vegetables,curd\r\nDinner - chapathi/vegetables', NULL),
 (2, 'Mixed South Indian', '', 'Breakfast - 2 idlis/2 dosas with chutney\r\nLunch - rice/fish/chicken/vegetables\r\nDinner - chapathi/fish/chicken/vegetables', NULL);
 
@@ -111,7 +111,7 @@ INSERT INTO `doctor` (`id`, `DName`, `KDName`, `MobileNo`, `AltMobileNo`, `Email
 --
 
 CREATE TABLE `exlsmmaster` (
-  `ELId` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `ELPlanName` varchar(30) NOT NULL,
   `KELPlanName` varchar(30) NOT NULL,
   `ELPlanDescription` text DEFAULT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE `exlsmmaster` (
 -- Dumping data for table `exlsmmaster`
 --
 
-INSERT INTO `exlsmmaster` (`ELId`, `ELPlanName`, `KELPlanName`, `ELPlanDescription`, `KELPlanDescription`) VALUES
+INSERT INTO `exlsmmaster` (`id`, `ELPlanName`, `KELPlanName`, `ELPlanDescription`, `KELPlanDescription`) VALUES
 (1, 'Moderate Exercise', '', 'Walking 30 minutes daily\r\nHouse Work', NULL),
 (2, 'Aerobic Exercise', '', 'Workout/Jogging/Cycling along with house work', NULL);
 
@@ -514,15 +514,15 @@ CREATE TABLE `patientrecruitment` (
   `SurgicalHistory` text DEFAULT NULL,
   `KSurgicalHistory` text DEFAULT NULL,
   `SurgeryDate` date DEFAULT NULL,
-  `DSId` int(11) DEFAULT NULL,
-  `ELId` int(11) DEFAULT NULL
+  `dietId` int(11) DEFAULT NULL,
+  `exerciseId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patientrecruitment`
 --
 
-INSERT INTO `patientrecruitment` (`id`,`patientId`, `SurveyDate`, `LastDVisitDate`, `doctorId`, `PhyDiagnosis`, `PhyComplianceAdvice`, `PhyMedicationAdvice`, `DVisitFrequency`, `KDVisitFrequency`, `Weight`, `WUnitID`, `Height`, `HUnitID`, `WaistCircum`, `WCUnitID`, `WaistHipRatio`, `HeartRate`, `RespiratoryRate`, `BPSystolic`, `BPDiastolic`, `PhysicalActivity`, `KPhysicalActivity`, `MenstrualStatus`, `KMenstrualStatus`, `SurgicalHistory`, `KSurgicalHistory`, `SurgeryDate`, `DSId`, `ELId`) VALUES
+INSERT INTO `patientrecruitment` (`id`,`patientId`, `SurveyDate`, `LastDVisitDate`, `doctorId`, `PhyDiagnosis`, `PhyComplianceAdvice`, `PhyMedicationAdvice`, `DVisitFrequency`, `KDVisitFrequency`, `Weight`, `WUnitID`, `Height`, `HUnitID`, `WaistCircum`, `WCUnitID`, `WaistHipRatio`, `HeartRate`, `RespiratoryRate`, `BPSystolic`, `BPDiastolic`, `PhysicalActivity`, `KPhysicalActivity`, `MenstrualStatus`, `KMenstrualStatus`, `SurgicalHistory`, `KSurgicalHistory`, `SurgeryDate`, `dietId`, `exerciseId`) VALUES
 (1,1002, '2020-02-17', '2020-02-05', 3, 'Salt Restriction and Regular Exercise recommended', 'Check Blood Pressure, Blood Sugar and Weight every month', NULL, 'Monthly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, NULL, NULL, NULL, NULL, NULL),
 (2,1007, '2020-02-18', '2020-01-01', 4, 'Salt Restriction, Exercise', 'Weight check every 6 months, BP every month', NULL, 'Monthly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, NULL, NULL, NULL, NULL, NULL),
 (3,1012, '2020-02-18', '2020-02-03', 5, NULL, 'Check BP every month', NULL, 'Fortnightly', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'Sedentry', NULL, 'Regular', NULL, 'Tubectomy , 15 years back', NULL, NULL, 2, 1),
@@ -620,7 +620,7 @@ ALTER TABLE `caregiver`
 -- Indexes for table `dietsupmaster`
 --
 ALTER TABLE `dietsupmaster`
-  ADD PRIMARY KEY (`DSId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doctor`
@@ -632,7 +632,7 @@ ALTER TABLE `doctor`
 -- Indexes for table `exlsmmaster`
 --
 ALTER TABLE `exlsmmaster`
-  ADD PRIMARY KEY (`ELId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `investmaster`
@@ -703,8 +703,8 @@ ALTER TABLE `patientmedsymptrack`
 ALTER TABLE `patientrecruitment`
   ADD KEY `patientId` (`patientId`),
   ADD KEY `id` (`id`),
-  ADD KEY `DSId` (`DSId`),
-  ADD KEY `ELId` (`ELId`);
+  ADD KEY `dietId` (`dietId`),
+  ADD KEY `exerciseId` (`exerciseId`);
 
 --
 -- Indexes for table `patientsmssent`
@@ -745,7 +745,7 @@ ALTER TABLE `caregiver`
 -- AUTO_INCREMENT for table `dietsupmaster`
 --
 ALTER TABLE `dietsupmaster`
-  MODIFY `DSId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -757,7 +757,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `exlsmmaster`
 --
 ALTER TABLE `exlsmmaster`
-  MODIFY `ELId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `investmaster`
@@ -833,8 +833,8 @@ ALTER TABLE `patientmedsymptrack`
 ALTER TABLE `patientrecruitment`
   ADD CONSTRAINT `patientrecruitment_ibfk_1` FOREIGN KEY (`patientId`) REFERENCES `patient` (`id`),
   ADD CONSTRAINT `patientrecruitment_ibfk_2` FOREIGN KEY (`doctorId`) REFERENCES `doctor` (`id`),
-  ADD CONSTRAINT `patientrecruitment_ibfk_3` FOREIGN KEY (`DSId`) REFERENCES `dietsupmaster` (`DSId`),
-  ADD CONSTRAINT `patientrecruitment_ibfk_4` FOREIGN KEY (`ELId`) REFERENCES `exlsmmaster` (`ELId`);
+  ADD CONSTRAINT `patientrecruitment_ibfk_3` FOREIGN KEY (`dietId`) REFERENCES `dietsupmaster` (`id`),
+  ADD CONSTRAINT `patientrecruitment_ibfk_4` FOREIGN KEY (`exerciseId`) REFERENCES `exlsmmaster` (`id`);
 
 --
 -- Constraints for table `patientsmssent`

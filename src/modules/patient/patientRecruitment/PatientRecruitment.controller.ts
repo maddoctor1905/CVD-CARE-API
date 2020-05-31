@@ -8,6 +8,9 @@ export class PatientRecruitmentController {
 
   @Get()
   findManyByPatientId(@Param('id') patientId: number) {
-    return this.patientRecruitmentService.findMany({where: {Patient: patientId}, relations: ['Patient', 'Doctor']});
+    return this.patientRecruitmentService.findMany({
+      where: {Patient: patientId},
+      relations: ['Patient', 'Doctor', 'Diet', 'Exercise'],
+    });
   }
 }
