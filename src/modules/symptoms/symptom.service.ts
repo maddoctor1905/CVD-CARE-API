@@ -8,8 +8,8 @@ export class SymptomService {
   constructor(@InjectRepository(MedicationCondition) private readonly medicationConditionRepository: Repository<MedicationCondition>) {
   }
 
-  find() {
-    return this.medicationConditionRepository.find();
+  find(cond) {
+    return this.medicationConditionRepository.find(cond);
   }
 
   findOneById(id: number) {

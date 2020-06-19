@@ -15,7 +15,7 @@ export class PatientController {
 
   @Get(':id')
   findOneById(@Param('id') id: string) {
-    return this.patientService.findOne({where: {id}});
+    return this.patientService.findOne({where: {id}, relations: ['Caregiver']});
   }
 
   @Put(':id')

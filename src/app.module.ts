@@ -17,6 +17,7 @@ import {PatientSymptom} from './modules/patient/patientSymptom/patientSymptom.en
 import {SymptomsModule} from './modules/symptoms/symptoms.module';
 import {Diet} from './modules/diet/diet.entity';
 import {Exercise} from './modules/exercise/exercise.entity';
+import {Caregiver} from './modules/caregiver/caregiver.entity';
 
 @Module({
   imports: [EnoNestCoreModule, TypeOrmModule.forRoot({
@@ -27,7 +28,7 @@ import {Exercise} from './modules/exercise/exercise.entity';
     password: environment.environment.MYSQL_PASSWORD,
     database: environment.environment.MYSQL_DATABASE,
     entities: [Patient, PatientMedication, MedicationMaster, PatientInvestigation, InvestigationMaster, Otp,
-      Doctor, PatientRecruitment, MedicationCondition, PatientSymptom, Diet, Exercise],
+      Doctor, PatientRecruitment, MedicationCondition, PatientSymptom, Diet, Exercise, Caregiver],
     synchronize: true,
   }), PatientModule, SymptomsModule, OtpModule],
   controllers: [],

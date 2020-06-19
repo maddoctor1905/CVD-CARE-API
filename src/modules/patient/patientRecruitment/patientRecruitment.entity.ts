@@ -1,4 +1,4 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn} from 'typeorm';
+import {Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn} from 'typeorm';
 import {Patient} from '../patient.entity';
 import {Doctor} from '../../doctor/doctor.entity';
 import {Diet} from '../../diet/diet.entity';
@@ -6,7 +6,7 @@ import {Exercise} from '../../exercise/exercise.entity';
 
 @Entity('patientrecruitment')
 export class PatientRecruitment {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @OneToOne(type => Patient)

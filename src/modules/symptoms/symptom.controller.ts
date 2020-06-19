@@ -8,6 +8,6 @@ export class SymptomController {
 
   @Get()
   find() {
-    return this.symptomService.find();
+    return this.symptomService.find({where: {Type: 'Symptom'}});
   }
 }
